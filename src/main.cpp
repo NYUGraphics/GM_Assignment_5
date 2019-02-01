@@ -430,7 +430,7 @@ Eigen::Vector3f computeTranslation (igl::opengl::glfw::Viewer& viewer,
                                     int from_y,
                                     Eigen::RowVector3d pt3D)
 {
-  Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+  Eigen::Matrix4f modelview = viewer.core.view;
   //project the given point (typically the handle centroid) to get a screen space depth
   Eigen::Vector3f proj = igl::project(pt3D.transpose().cast<float>().eval(),
                                       modelview,
