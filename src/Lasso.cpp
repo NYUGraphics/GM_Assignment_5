@@ -36,7 +36,7 @@ int Lasso::pickVertex(int mouse_x, int mouse_y)
   // Cast a ray in the view direction starting from the mouse position
   double x = viewer.current_mouse_x;
   double y = viewer.core.viewport(3) - viewer.current_mouse_y;
-  if(igl::unproject_onto_mesh(Eigen::Vector2f(x,y), viewer.core.view * viewer.core.model,
+  if(igl::unproject_onto_mesh(Eigen::Vector2f(x,y), viewer.core.view,
                               viewer.core.proj, viewer.core.viewport, V, F, fid, bc))
   {
     // paint hit red
@@ -59,7 +59,7 @@ int Lasso::strokeAdd(int mouse_x,
   Eigen::RowVector3d pt;
   int fi = -1;
   
-  Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+  Eigen::Matrix4f modelview = viewer.core.view ;
 
   if (d<0)//first time
   {
@@ -92,7 +92,7 @@ int Lasso::strokeAdd(int mouse_x,
 void Lasso::strokeFinish(Eigen::VectorXi &selected_vertices)
 {
   
-  Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+  Eigen::Matrix4f modelview = viewer.core.view ;
 
   //marker for selected vertices
   Eigen::VectorXi is_selected; is_selected.setZero(V.rows(),1);

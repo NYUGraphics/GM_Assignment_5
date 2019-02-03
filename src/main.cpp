@@ -477,7 +477,7 @@ Eigen::Vector4f computeRotation(igl::opengl::glfw::Viewer& viewer,
   rotation.setZero();
   rotation[3] = 1.;
 
-  Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+  Eigen::Matrix4f modelview = viewer.core.view;
 
   //initialize a trackball around the handle that is being rotated
   //the trackball has (approximately) width w and height h
